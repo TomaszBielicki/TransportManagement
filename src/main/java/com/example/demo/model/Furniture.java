@@ -1,17 +1,24 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Furniture {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String furnitureId;
     private String name;
     private double capacity;
 
+    @ManyToOne
+    private Orders orders;
+
     public Furniture() {
     }
 
-    public Furniture(Long id, String furnitureId, String name, double capacity) {
-        this.id = id;
+    public Furniture(String furnitureId, String name, double capacity) {
         this.furnitureId = furnitureId;
         this.name = name;
         this.capacity = capacity;

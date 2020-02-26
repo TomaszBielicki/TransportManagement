@@ -1,23 +1,28 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Transport {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String transportId;
-    private List<Order> orderList;
     private double capacity;
     private Date deliveryDate;
+
+    @OneToMany(mappedBy = "transport")
+    private List<Orders> orderList = new ArrayList<>();
 
     public Transport() {
     }
 
-    public Transport(Long id, String transportId, List<Order> orderList, double capacity, Date deliveryDate) {
-        this.id = id;
+    public Transport(String transportId, double capacity, Date deliveryDate) {
         this.transportId = transportId;
-        this.orderList = orderList;
         this.capacity = capacity;
         this.deliveryDate = deliveryDate;
     }
@@ -38,13 +43,13 @@ public class Transport {
         this.transportId = transportId;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
+//    public List<Order> getOrderList() {
+//        return orderList;
+//    }
+//
+//    public void setOrderList(List<Order> orderList) {
+//        this.orderList = orderList;
+//    }
 
     public double getCapacity() {
         return capacity;

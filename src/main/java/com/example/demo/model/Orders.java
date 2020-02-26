@@ -1,24 +1,34 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
 import javax.xml.crypto.Data;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Order {
+@Entity
+public class Orders {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String orderId;
     private String name;
     private String lastName;
     private String postCode;
     private String address;
-    private List<Furniture> furnitureList; //nie zainicjalizowana
-    private Data orderDate;
+    private Date orderDate;
 
-    public Order() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orders")
+    private List<Furniture> furnitureList = new ArrayList<>();
+
+    @ManyToOne
+    private Transport transport;
+
+    public Orders() {
     }
 
-    public Order(Long id, String orderId, String name, String lastName, String postCode, String address, Data orderDate) {
-        this.id = id;
+    public Orders(String orderId, String name, String lastName, String postCode, String address, Date orderDate) {
         this.orderId = orderId;
         this.name = name;
         this.lastName = lastName;
@@ -75,19 +85,19 @@ public class Order {
         this.address = address;
     }
 
-    public List<Furniture> getFurnitureList() {
-        return furnitureList;
-    }
+//    public List<Furniture> getFurnitureList() {
+//        return furnitureList;
+//    }
+//
+//    public void setFurnitureList(List<Furniture> furnitureList) {
+//        this.furnitureList = furnitureList;
+//    }
 
-    public void setFurnitureList(List<Furniture> furnitureList) {
-        this.furnitureList = furnitureList;
-    }
-
-    public Data getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Data orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 }
