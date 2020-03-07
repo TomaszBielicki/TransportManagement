@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.transport;
 
 import com.example.demo.model.Transport;
 

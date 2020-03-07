@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Transport;
-import com.example.demo.service.TransportService;
+import com.example.demo.service.transport.TransportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

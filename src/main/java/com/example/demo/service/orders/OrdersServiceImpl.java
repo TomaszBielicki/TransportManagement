@@ -1,7 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.service.orders;
 
 import com.example.demo.model.Orders;
 import com.example.demo.repo.OrdersRepository;
+import com.example.demo.service.orders.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
